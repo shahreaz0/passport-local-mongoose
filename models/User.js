@@ -9,6 +9,12 @@ const userSchema = mongoose.Schema({
 	password: {
 		type: String,
 	},
+	googleId: {
+		type: String,
+	},
+	thumbnail: {
+		type: String,
+	},
 });
 
 userSchema.plugin(plm);

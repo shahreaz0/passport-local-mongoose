@@ -2,7 +2,7 @@ const router = require("express").Router();
 const User = require("../models/User");
 const passport = require("passport");
 
-// passport -local
+// passport-local
 router.get("/register", async (req, res) => {
 	res.render("register");
 });
@@ -38,7 +38,17 @@ router.post(
 	(req, res) => {},
 );
 
-//passport-google
+//passport-google-oauth20
+router.get(
+	"/auth/google",
+	passport.authenticate("google", {
+		scope: ["profile"],
+	}),
+);
+
+router.get("/auth/google/cb", passport.authenticate("google"), (req, res) => {
+	res.redirect("/");
+});
 
 router.get("/logout", (req, res) => {
 	req.logOut();

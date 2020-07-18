@@ -37,7 +37,7 @@ const isLoggedIn = (req, res, next) => {
 
 //routes
 app.get("/", (req, res) => {
-	res.render("home");
+	res.render("home", { user: req.user });
 });
 
 app.use(authRoutes);
